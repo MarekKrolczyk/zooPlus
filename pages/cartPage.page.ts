@@ -1,15 +1,12 @@
-import { Page, Locator } from "@playwright/test";
+import { Page } from "@playwright/test";
+import { BasePage } from '../pages/base.page';
 
-export default class CartPage {
+export class CartPage extends BasePage {
     productName(productName: string) { return this.page.locator(`(//*[@data-zta="productName" and contains(text(), '${productName}')])`) };
     productPrice(productName: string) { return this.page.locator(`(//*[@data-zta="productName" and contains(text(), '${productName}')])`) };
-
-    productTotalPrice(priceWithShipment: string) { return this.page.locator(`(//*[@data-zta="productStandardPriceAmount" and contains(text(), '${priceWithShipment}')])`) };
-
-    private page: Page;
-    readonly acceptCookiesButton: Locator;
-
+    productTotalPrice(priceWithShipment: string) { return this.page.locator(`(//span[@data-zta="productStandardPriceAmount" and contains(text(), '${priceWithShipment}')])`);
+}
     constructor(page: Page) {
-        this.page = page;
-    }
+        super(page);
+      }
 }

@@ -1,0 +1,8 @@
+{
+    "400": {
+        "Title": "Ups! Wystąpił błąd!"
+    },
+    "404": {
+        "Title": "Błędne dane logowania!"
+    }
+}

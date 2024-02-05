@@ -1,12 +1,15 @@
-import { Page, Locator } from "@playwright/test";
+import { Page } from "@playwright/test";
+import { BasePage } from "./base.page";
 
-export default class CookiesPage {
-    readonly acceptCookiesButton: Locator;
+export class CookiesPage extends BasePage {
+  url = "cookie-policy";
+  acceptCookiesButton = this.page.locator('[id="onetrust-accept-btn-handler"]');
 
-    constructor(page: Page) {
-        this.acceptCookiesButton = page.locator('[id="onetrust-accept-btn-handler"]');
-    }
-    async acceptCookies() {
-        await this.acceptCookiesButton.click();
-    };
+  constructor(page: Page) {
+    super(page);
+  }
+
+  async acceptCookies() {
+    await this.acceptCookiesButton.click();
+  }
 }
